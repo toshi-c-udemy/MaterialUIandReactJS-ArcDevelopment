@@ -7,20 +7,20 @@ import {
   Button,
   Menu,
   MenuItem,
-  useMediaQuery,
   IconButton,
   List,
   ListItem,
   ListItemText,
+  SwipeableDrawer,
+  useMediaQuery,
+  useScrollTrigger,
+  useTheme,
 } from '@material-ui/core';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/styles';
-import { useTheme } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import logo from '../../assets/logo.svg';
-import { Link } from 'react-router-dom';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -72,8 +72,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '50px',
     marginLeft: '50px',
     marginRight: '25px',
-
     height: '45px',
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.light,
+    },
   },
   menu: {
     backgroundColor: theme.palette.common.blue,
@@ -86,6 +88,10 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       opacity: 1,
     },
+  },
+  drawerIcon: {
+    height: '50px',
+    width: '50px',
   },
   drawerIconContainer: {
     marginLeft: 'auto',
@@ -263,7 +269,7 @@ export default function Header(props) {
         onOpen={() => setOpenDrawer(true)}
         classes={{ paper: classes.drawer }}
       >
-        <div className={classes.toolbarMargin}></div>
+        <div className={classes.toolbarMargin} />
         <List disablePadding>
           {routes.map((route, index) => (
             <ListItem
@@ -308,7 +314,7 @@ export default function Header(props) {
         onClick={() => setOpenDrawer(!openDrawer)}
         disableRipple
       >
-        <MenuIcon />
+        <MenuIcon className={classes.drawerIcon} />
       </IconButton>
     </React.Fragment>
   );
@@ -331,7 +337,7 @@ export default function Header(props) {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-      <div className={classes.toolbarMargin}></div>
+      <div className={classes.toolbarMargin} />
     </React.Fragment>
   );
 }
