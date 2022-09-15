@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Toolbar, Tabs, Tab, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Tabs, Tab, Button, Menu, MenuItem } from '@material-ui/core';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/styles';
 
@@ -50,9 +50,20 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleChange = (e, value) => {
     setValue(value);
+  };
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+    setOpen(true);
+  };
+  const handleClose = (e) => {
+    setAnchorEl(null);
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -92,7 +103,15 @@ export default function Header(props) {
               indicatorColor='primary'
             >
               <Tab className={classes.tab} component={Link} to='/' label='Home' />
-              <Tab className={classes.tab} component={Link} to='/services' label='Service' />
+              <Tab
+                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                aria-haspopup={anchorEl ? 'true' : undefined}
+                className={classes.tab}
+                component={Link}
+                onClick={(event) => handleClick(event)}
+                to='/services'
+                label='Service'
+              />
               <Tab
                 className={classes.tab}
                 component={Link}
@@ -105,6 +124,17 @@ export default function Header(props) {
             <Button variant='contained' color='secondary' className={classes.button}>
               Free Estimate
             </Button>
+            <Menu
+              id='simple-menu'
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{ onMouseLeave: handleClose }}
+            >
+              <MenuItem onClick={handleClose}>Custom Software Development</MenuItem>
+              <MenuItem onClick={handleClose}>Mobile App Development</MenuItem>
+              <MenuItem onClick={handleClose}>Website Development</MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
