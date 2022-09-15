@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={() => <div>Home</div>}></Route>
           <Route exact path='/services' component={() => <div>Service</div>}></Route>
-          <Route exact path='/customsofrware' component={() => <div>Custom Software</div>}></Route>
+          <Route exact path='/customsoftware' component={() => <div>Custom Software</div>}></Route>
           <Route exact path='/mobileapps' component={() => <div>Mobile Apps</div>}></Route>
           <Route exact path='/websites' component={() => <div>Websites</div>}></Route>
           <Route exact path='/revolution' component={() => <div>The Revolution</div>}></Route>
