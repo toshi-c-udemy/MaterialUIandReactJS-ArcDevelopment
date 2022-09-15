@@ -93,6 +93,16 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'transparent',
     },
   },
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: 'white',
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange,
+  },
 }));
 
 export default function Header(props) {
@@ -272,10 +282,13 @@ export default function Header(props) {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
       >
         <List disablePadding>
           <ListItem onClick={() => setOpenDrawer(false)} divider button component={Link} to='/'>
-            <ListItemText disableTypography>Home</ListItemText>
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Home
+            </ListItemText>
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -284,7 +297,9 @@ export default function Header(props) {
             component={Link}
             to='/services'
           >
-            <ListItemText disableTypography>Services</ListItemText>
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Services
+            </ListItemText>
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -293,7 +308,9 @@ export default function Header(props) {
             component={Link}
             to='/revolution'
           >
-            <ListItemText disableTypography>The Revolution</ListItemText>
+            <ListItemText className={classes.drawerItem} disableTypography>
+              The Revolution
+            </ListItemText>
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -302,7 +319,9 @@ export default function Header(props) {
             component={Link}
             to='/about'
           >
-            <ListItemText disableTypography>About Us</ListItemText>
+            <ListItemText className={classes.drawerItem} disableTypography>
+              About Us
+            </ListItemText>
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
@@ -311,16 +330,21 @@ export default function Header(props) {
             component={Link}
             to='/contact'
           >
-            <ListItemText disableTypography>Contact Us</ListItemText>
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Contact Us
+            </ListItemText>
           </ListItem>
           <ListItem
             onClick={() => setOpenDrawer(false)}
             divider
             button
             component={Link}
+            className={classes.drawerItemEstimate}
             to='/estimate'
           >
-            <ListItemText disableTypography>Free Estimate</ListItemText>
+            <ListItemText className={classes.drawerItem} disableTypography>
+              Free Estimate
+            </ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
