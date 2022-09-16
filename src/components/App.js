@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import theme from './ui/Theme';
 import Header from '../components/ui/Header';
+import Footer from '../components/ui/Footer';
 
 function App() {
   return (
@@ -11,7 +12,11 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path='/' component={() => <div>Home</div>}></Route>
+          <Route
+            exact
+            path='/'
+            component={() => <div style={{ height: '2000px' }}>Home</div>}
+          ></Route>
           <Route exact path='/services' component={() => <div>Service</div>}></Route>
           <Route exact path='/customsoftware' component={() => <div>Custom Software</div>}></Route>
           <Route exact path='/mobileapps' component={() => <div>Mobile Apps</div>}></Route>
@@ -21,6 +26,7 @@ function App() {
           <Route exact path='/contact' component={() => <div>Contact</div>}></Route>
           <Route exact path='/estimate' component={() => <div>Estimate</div>}></Route>
         </Switch>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
