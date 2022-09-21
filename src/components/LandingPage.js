@@ -1,11 +1,18 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import { makeStyles, Grid, Button } from '@material-ui/core';
+import { makeStyles, Grid, Button, Typography } from '@material-ui/core';
 
 import animationData from '../animations/landinganimation/data';
 import ButtonArrow from '../components/ui/ButtonArrow';
 
-const useStyle = makeStyles((theme) => ({}));
+const useStyle = makeStyles((theme) => ({
+  animation: {
+    maxWidth: '50em',
+    minWidth: '21em',
+    marginTop: '2em',
+    marginLeft: '10%',
+  },
+}));
 
 export default function LandingPage() {
   const classes = useStyle();
@@ -22,13 +29,13 @@ export default function LandingPage() {
   return (
     <Grid container direction='column'>
       <Grid item>
-        <Grid container direction='row'>
-          <Grid item>
-            <div>
+        <Grid container justify='flex-end' alignItems='center' direction='row'>
+          <Grid sm item>
+            <Typography variant='h2' align='center'>
               Bring West Coast Technology
               <br />
               to the Midwest
-            </div>
+            </Typography>
             <Grid container>
               <Grid item>
                 <Button variant='contained'>Free Estimate</Button>
@@ -41,7 +48,7 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid sm item className={classes.animation}>
             <Lottie options={defaultOptions} height={'100%'} width={'100%'} />
           </Grid>
         </Grid>
