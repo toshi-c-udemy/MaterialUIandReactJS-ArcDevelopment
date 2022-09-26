@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import { makeStyles, Grid, Button, Typography, useTheme } from '@material-ui/core';
+import { makeStyles, Grid, Button, Typography, useTheme, useMediaQuery } from '@material-ui/core';
 
 import animationData from '../animations/landinganimation/data';
 import ButtonArrow from '../components/ui/ButtonArrow';
@@ -39,6 +39,9 @@ const useStyle = makeStyles((theme) => ({
     fontSize: '0,7rem',
     height: 35,
     padding: 5,
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: '2em',
+    },
   },
 
   mainContainer: {
@@ -64,11 +67,24 @@ const useStyle = makeStyles((theme) => ({
   subtitle: {
     marginBottom: '1em',
   },
+  icon: {
+    marginLeft: '2em',
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: 0,
+    },
+  },
+  serviceContainer: {
+    marginTop: '12em',
+    [theme.breakpoints.down('sm')]: {
+      padding: 25,
+    },
+  },
 }));
 
 export default function LandingPage() {
   const classes = useStyle();
   const theme = useTheme();
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   const defaultOptions = {
     loop: true,
@@ -110,9 +126,20 @@ export default function LandingPage() {
         </Grid>
       </Grid>
       <Grid item>
-        {/*-----Service Block*/}
-        <Grid container direction='row'>
-          <Grid item>
+        {/*-----Service Block-----*/}
+        <Grid
+          container
+          direction='row'
+          justify={matchesSM ? 'center' : undefined}
+          className={classes.serviceContainer}
+        >
+          <Grid
+            item
+            style={{
+              marginLeft: matchesSM ? 0 : '5em',
+              textAlign: matchesSM ? 'center' : undefined,
+            }}
+          >
             <Typography variant='h4'>Custom Software Development</Typography>
             <Typography variant='subtitle1' className={classes.subtitle}>
               Save Energy. Save Time. Save Money.
@@ -127,7 +154,7 @@ export default function LandingPage() {
             </Button>
           </Grid>
           <Grid item>
-            <img alt='custom software icon' src={customSoftwareIcon} />
+            <img className={classes.icon} alt='custom software icon' src={customSoftwareIcon} />
           </Grid>
         </Grid>
       </Grid>
