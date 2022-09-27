@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   rowContainer: {
     paddingLeft: '5em',
     paddingRight: '5em',
-
     [theme.breakpoints.down('sm')]: {
       paddingLeft: '1.5em',
       paddingRight: '1.5em',
@@ -140,7 +139,7 @@ export default function MobileApps(props) {
           </Grid>
         </Grid>
         <Grid item md>
-          <Lottie options={defaultOptions} isStopped={true} />
+          <Lottie options={defaultOptions} isStopped={true} style={{ maxWidth: '20em' }} />
         </Grid>
         <Grid item container direction='column' md>
           <Grid item>
@@ -165,10 +164,11 @@ export default function MobileApps(props) {
         container
         direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
+        style={{ marginBottom: '15em' }}
       >
         <Grid item container direction='column' alignItems='center' md>
           <Grid item>
-            <Typography variant='h4' gutterBottom>
+            <Typography align='center' variant='h4' gutterBottom>
               Extend Functionality
             </Typography>
           </Grid>
@@ -185,7 +185,7 @@ export default function MobileApps(props) {
           style={{ marginTop: matchesMD ? '10em' : 0, marginBottom: matchesMD ? '10em' : 0 }}
         >
           <Grid item>
-            <Typography variant='h4' gutterBottom>
+            <Typography align='center' variant='h4' gutterBottom>
               Extend Access
             </Typography>
           </Grid>
@@ -199,7 +199,7 @@ export default function MobileApps(props) {
         </Grid>
         <Grid item container direction='column' alignItems='center' md>
           <Grid item>
-            <Typography variant='h4' gutterBottom>
+            <Typography align='center' variant='h4' gutterBottom>
               Increase Engagement
             </Typography>
           </Grid>
