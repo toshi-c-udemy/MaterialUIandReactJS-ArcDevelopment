@@ -6,7 +6,7 @@ import ButtonArrow from './ButtonArrow';
 import background from '../../assets/background.jpg';
 import mobileBackground from '../../assets/mobileBackground.jpg';
 
-const useStyle = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   learnButton: {
     ...theme.typography.learnButton,
     fontSize: '0.7rem',
@@ -34,7 +34,7 @@ const useStyle = makeStyles((theme) => ({
     borderRadius: 50,
     height: 80,
     width: 205,
-    background: theme.palette.common.orange,
+    backgroundColor: theme.palette.common.orange,
     fontSize: '1.5rem',
     marginRight: '5em',
     marginLeft: '2em',
@@ -49,7 +49,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 export default function CallToAction(props) {
-  const classes = useStyle();
+  const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 

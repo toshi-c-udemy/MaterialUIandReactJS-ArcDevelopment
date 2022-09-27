@@ -17,19 +17,19 @@ import CallToAction from './ui/CallToAction';
 import animationData from '../animations/landinganimation/data';
 import ButtonArrow from '../components/ui/ButtonArrow';
 import customSoftwareIcon from '../assets/Custom Software Icon.svg';
-import mobileAppIcon from '../assets/mobileIcon.svg';
-import webSiteIcon from '../assets/websiteIcon.svg';
+import mobileAppsIcon from '../assets/mobileIcon.svg';
+import websitesIcon from '../assets/websiteIcon.svg';
 import revolutionBackground from '../assets/repeatingBackground.svg';
 import infoBackground from '../assets/infoBackground.svg';
 
-const useStyle = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   animation: {
     maxWidth: '50em',
     minWidth: '21em',
     marginTop: '2em',
     marginLeft: '10%',
     [theme.breakpoints.down('sm')]: {
-      maxWidth: '30',
+      maxWidth: '30em',
     },
   },
   estimateButton: {
@@ -52,14 +52,13 @@ const useStyle = makeStyles((theme) => ({
   },
   learnButton: {
     ...theme.typography.learnButton,
-    fontSize: '0,7rem',
+    fontSize: '0.7rem',
     height: 35,
     padding: 5,
     [theme.breakpoints.down('sm')]: {
       marginBottom: '2em',
     },
   },
-
   mainContainer: {
     marginTop: '5em',
     [theme.breakpoints.down('md')]: {
@@ -113,6 +112,7 @@ const useStyle = makeStyles((theme) => ({
       paddingBottom: '8em',
       paddingLeft: 0,
       paddingRight: 0,
+      borderRadius: 0,
       width: '100%',
     },
   },
@@ -127,7 +127,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 export default function LandingPage(props) {
-  const classes = useStyle();
+  const classes = useStyles();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
@@ -144,11 +144,12 @@ export default function LandingPage(props) {
   return (
     <Grid container direction='column' className={classes.mainContainer}>
       <Grid item>
+        {' '}
         {/*-----Hero Block-----*/}
         <Grid container justify='flex-end' alignItems='center' direction='row'>
           <Grid sm item className={classes.heroTextContainer}>
             <Typography variant='h2' align='center'>
-              Bring West Coast Technology
+              Bringing West Coast Technology
               <br />
               to the Midwest
             </Typography>
@@ -168,8 +169,8 @@ export default function LandingPage(props) {
                 <Button
                   component={Link}
                   to='/revolution'
-                  variant='outlined'
                   className={classes.learnButtonHero}
+                  variant='outlined'
                   onClick={() => props.setValue(2)}
                 >
                   <span style={{ marginRight: 10 }}>Learn More</span>
@@ -184,7 +185,8 @@ export default function LandingPage(props) {
         </Grid>
       </Grid>
       <Grid item>
-        {/*-----Custom software Block-----*/}
+        {' '}
+        {/*-----Custom Software Block-----*/}
         <Grid
           container
           direction='row'
@@ -203,8 +205,8 @@ export default function LandingPage(props) {
               Save Energy. Save Time. Save Money.
             </Typography>
             <Typography variant='subtitle1'>
-              Complete digital solution, from investigation to{' '}
-              <span className={classes.specialText}>celebration</span>
+              Complete digital solutions, from investigation to{' '}
+              <span className={classes.specialText}>celebration.</span>
             </Typography>
             <Button
               component={Link}
@@ -226,6 +228,7 @@ export default function LandingPage(props) {
         </Grid>
       </Grid>
       <Grid item>
+        {' '}
         {/*-----iOS/Android Block-----*/}
         <Grid
           container
@@ -236,7 +239,6 @@ export default function LandingPage(props) {
           <Grid
             item
             style={{
-              marginLeft: matchesSM ? 0 : '5em',
               textAlign: matchesSM ? 'center' : undefined,
             }}
           >
@@ -245,9 +247,8 @@ export default function LandingPage(props) {
               Extend Functionality. Extend Access. Increase Engagement.
             </Typography>
             <Typography variant='subtitle1'>
-              Integrate your web experience or create a standalone app{matchesSM ? null : <br />}
-              with either mobile platform.
-              <span className={classes.specialText}>celebration</span>
+              Integrate your web experience or create a standalone app
+              {matchesSM ? null : <br />}with either mobile platform.
             </Typography>
             <Button
               component={Link}
@@ -264,11 +265,12 @@ export default function LandingPage(props) {
             </Button>
           </Grid>
           <Grid item style={{ marginRight: matchesSM ? 0 : '5em' }}>
-            <img className={classes.icon} alt='mobile phone icon' src={mobileAppIcon} />
+            <img className={classes.icon} alt='mobile phone icon' src={mobileAppsIcon} />
           </Grid>
         </Grid>
       </Grid>
       <Grid item>
+        {' '}
         {/*-----Websites Block-----*/}
         <Grid
           container
@@ -305,7 +307,7 @@ export default function LandingPage(props) {
             </Button>
           </Grid>
           <Grid item>
-            <img className={classes.icon} alt='website icon' src={webSiteIcon} />
+            <img className={classes.icon} alt='website icon' src={websitesIcon} />
           </Grid>
         </Grid>
       </Grid>
@@ -327,7 +329,7 @@ export default function LandingPage(props) {
                 </Grid>
                 <Grid item>
                   <Typography variant='subtitle1'>
-                    Visionary insight coupled with cutting-edge technology is a recipe for
+                    Visionary insights coupled with cutting-edge technology is a recipe for
                     revolution.
                   </Typography>
                   <Button
@@ -359,7 +361,9 @@ export default function LandingPage(props) {
           <Grid
             item
             container
-            style={{ textAlign: matchesXS ? 'center' : 'inherit' }}
+            style={{
+              textAlign: matchesXS ? 'center' : 'inherit',
+            }}
             direction={matchesXS ? 'column' : 'row'}
           >
             <Grid item sm style={{ marginLeft: matchesXS ? 0 : matchesSM ? '2em' : '5em' }}>
@@ -374,11 +378,11 @@ export default function LandingPage(props) {
                     to='/about'
                     variant='outlined'
                     style={{ color: 'white', borderColor: 'white' }}
-                    className={classes.learnButtonHero}
+                    className={classes.learnButton}
                     onClick={() => props.setValue(3)}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
-                    <ButtonArrow width={15} height={15} fill='white' />
+                    <ButtonArrow width={10} height={10} fill='white' />
                   </Button>
                 </Grid>
               </Grid>
@@ -398,7 +402,7 @@ export default function LandingPage(props) {
                 <Typography variant='subtitle2'>
                   Say hello!{' '}
                   <span role='img' aria-label='waving hand'>
-                    👋
+                    👋🏻
                   </span>
                 </Typography>
                 <Grid item>
@@ -407,11 +411,11 @@ export default function LandingPage(props) {
                     to='/contact'
                     variant='outlined'
                     style={{ color: 'white', borderColor: 'white' }}
-                    className={classes.learnButtonHero}
+                    className={classes.learnButton}
                     onClick={() => props.setValue(4)}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
-                    <ButtonArrow width={15} height={15} fill='white' />
+                    <ButtonArrow width={10} height={10} fill='white' />
                   </Button>
                 </Grid>
               </Grid>

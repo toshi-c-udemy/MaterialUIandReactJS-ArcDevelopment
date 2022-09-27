@@ -7,14 +7,14 @@ const arcGrey = '#868686';
 export default createMuiTheme({
   palette: {
     common: {
-      blue: `${arcBlue}`,
-      orange: `${arcOrange}`,
+      blue: arcBlue,
+      orange: arcOrange,
     },
     primary: {
-      main: `${arcBlue}`,
+      main: arcBlue,
     },
     secondary: {
-      main: `${arcOrange}`,
+      main: arcOrange,
     },
   },
   typography: {
@@ -22,6 +22,7 @@ export default createMuiTheme({
       fontFamily: 'Raleway',
       textTransform: 'none',
       fontWeight: 700,
+      color: 'white',
       fontSize: '1rem',
     },
     estimate: {
@@ -41,7 +42,6 @@ export default createMuiTheme({
       fontFamily: 'Pacifico',
       fontSize: '2.5rem',
       color: arcBlue,
-      lineHeight: 1.5,
     },
     h4: {
       fontFamily: 'Raleway',
@@ -50,20 +50,20 @@ export default createMuiTheme({
       fontWeight: 700,
     },
     subtitle1: {
-      fontSize: '1.2rem',
+      fontSize: '1.25rem',
       fontWeight: 300,
       color: arcGrey,
     },
     subtitle2: {
       color: 'white',
-      fontSize: '1.25rem',
       fontWeight: 300,
+      fontSize: '1.25rem',
     },
     learnButton: {
       borderColor: arcBlue,
-      color: arcBlue,
       borderWidth: 2,
       textTransform: 'none',
+      color: arcBlue,
       borderRadius: 50,
       fontFamily: 'Roboto',
       fontWeight: 'bold',
