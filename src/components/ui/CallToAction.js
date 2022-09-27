@@ -38,6 +38,8 @@ const useStyle = makeStyles((theme) => ({
     fontSize: '1.5rem',
     marginRight: '5em',
     marginLeft: '2em',
+    '&:hover': { backgroundColor: theme.palette.secondary.light },
+
     [theme.breakpoints.down('sm')]: {
       marginLeft: 0,
 
@@ -46,7 +48,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-export default function CallToAction() {
+export default function CallToAction(props) {
   const classes = useStyle();
   const theme = useTheme();
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
@@ -79,6 +81,7 @@ export default function CallToAction() {
                 to='/revolution'
                 variant='outlined'
                 className={classes.learnButton}
+                onClick={() => props.setValue(2)}
               >
                 <span style={{ marginRight: 5 }}>Learn More</span>
                 <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
@@ -93,6 +96,7 @@ export default function CallToAction() {
           to='/estimate'
           variant='contained'
           className={classes.estimateButton}
+          onClick={() => props.setValue(5)}
         >
           Free Estimate
         </Button>
