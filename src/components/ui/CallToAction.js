@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Typography, makeStyles, Button, useTheme, useMediaQuery } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import ButtonArrow from './ButtonArrow';
 import background from '../../assets/background.jpg';
@@ -73,7 +74,12 @@ export default function CallToAction() {
               Take advantage of the 21st Century.
             </Typography>
             <Grid container justify={matchesSM ? 'center' : undefined} item>
-              <Button variant='outlined' className={classes.learnButton}>
+              <Button
+                component={Link}
+                to='/revolution'
+                variant='outlined'
+                className={classes.learnButton}
+              >
                 <span style={{ marginRight: 5 }}>Learn More</span>
                 <ButtonArrow width={10} height={10} fill={theme.palette.common.blue} />
               </Button>
@@ -82,7 +88,12 @@ export default function CallToAction() {
         </Grid>
       </Grid>
       <Grid item>
-        <Button variant='contained' className={classes.estimateButton}>
+        <Button
+          component={Link}
+          to='/estimate'
+          variant='contained'
+          className={classes.estimateButton}
+        >
           Free Estimate
         </Button>
       </Grid>
