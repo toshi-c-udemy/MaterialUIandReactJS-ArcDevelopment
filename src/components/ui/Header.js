@@ -125,6 +125,7 @@ export default function Header(props) {
   const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const matches = useMediaQuery(theme.breakpoints.down('md'));
+
   const [openDrawer, setOpenDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
@@ -143,6 +144,7 @@ export default function Header(props) {
     setOpenMenu(false);
     props.setSelectedIndex(i);
   };
+
   const handleClose = (e) => {
     setAnchorEl(null);
     setOpenMenu(false);
@@ -157,7 +159,7 @@ export default function Header(props) {
       selectedIndex: 1,
     },
     {
-      name: 'Mobile AppDevelopment',
+      name: 'iOS/Android App Development',
       link: '/mobileapps',
       activeIndex: 1,
       selectedIndex: 2,
@@ -196,6 +198,9 @@ export default function Header(props) {
             }
           }
           break;
+        case '/estimate':
+          props.setValue(5);
+          break;
         default:
           break;
       }
@@ -220,10 +225,17 @@ export default function Header(props) {
             aria-owns={route.ariaOwns}
             aria-haspopup={route.ariaPopup}
             onMouseOver={route.mouseOver}
-          ></Tab>
+          />
         ))}
       </Tabs>
-      <Button variant='contained' color='secondary' className={classes.button}>
+      <Button
+        component={Link}
+        to='/estimate'
+        variant='contained'
+        color='secondary'
+        className={classes.button}
+        onClick={() => props.setValue(5)}
+      >
         Free Estimate
       </Button>
       <Menu
@@ -269,7 +281,7 @@ export default function Header(props) {
       >
         <div className={classes.toolbarMargin} />
         <List disablePadding>
-          {routes.map((route, index) => (
+          {routes.map((route) => (
             <ListItem
               divider
               key={`${route}${route.activeIndex}`}
@@ -288,7 +300,6 @@ export default function Header(props) {
               </ListItemText>
             </ListItem>
           ))}
-
           <ListItem
             onClick={() => {
               setOpenDrawer(false);
@@ -320,7 +331,7 @@ export default function Header(props) {
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar position='fixed' color='primary' className={classes.appbar}>
+        <AppBar position='fixed' className={classes.appbar}>
           <Toolbar disableGutters>
             <Button
               component={Link}

@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   link: {
     color: 'white',
     fontFamily: 'Arial',
+    fontSize: '0.75rem',
     fontWeight: 'bold',
     textDecoration: 'none',
   },
@@ -111,17 +112,17 @@ export default function Footer(props) {
                   props.setSelectedIndex(2);
                 }}
               >
-                Mobile App Development
+                iOS/Android App Development
               </Grid>
               <Grid
                 item
                 component={Link}
-                to='/websites'
-                className={classes.link}
                 onClick={() => {
                   props.setValue(1);
                   props.setSelectedIndex(3);
                 }}
+                to='/websites'
+                className={classes.link}
               >
                 Website Development
               </Grid>
@@ -132,9 +133,9 @@ export default function Footer(props) {
               <Grid
                 item
                 component={Link}
-                onClick={() => props.setValue(2)}
                 to='/revolution'
                 className={classes.link}
+                onClick={() => props.setValue(2)}
               >
                 The Revolution
               </Grid>
@@ -155,15 +156,6 @@ export default function Footer(props) {
                 onClick={() => props.setValue(2)}
               >
                 Technology
-              </Grid>
-              <Grid
-                item
-                component={Link}
-                to='/revolution'
-                className={classes.link}
-                onClick={() => props.setValue(2)}
-              >
-                Services
               </Grid>
               <Grid
                 item
@@ -216,18 +208,18 @@ export default function Footer(props) {
                 to='/contact'
                 className={classes.link}
               >
-                Contact US
+                Contact Us
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Hidden>
-      <img alt='black decorative slash' src={footerAdornment} className={classes.adornment}></img>
+      <img alt='black decorative slash' src={footerAdornment} className={classes.adornment} />
       <Grid container justify='flex-end' spacing={2} className={classes.socialContainer}>
         <Grid
           item
           component={'a'}
-          href='http://www.facebook.com'
+          href='https://www.facebook.com'
           rel='noopener noreferrer'
           target='_blank'
         >
@@ -236,7 +228,7 @@ export default function Footer(props) {
         <Grid
           item
           component={'a'}
-          href='http://www.twitter.com'
+          href='https://www.twitter.com'
           rel='noopener noreferrer'
           target='_blank'
         >
@@ -245,7 +237,7 @@ export default function Footer(props) {
         <Grid
           item
           component={'a'}
-          href='http://www.instagram.com'
+          href='https://www.instagram.com'
           rel='noopener noreferrer'
           target='_blank'
         >
