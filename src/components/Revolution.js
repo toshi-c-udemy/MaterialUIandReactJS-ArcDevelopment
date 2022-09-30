@@ -13,6 +13,8 @@ import maintain from '../assets/maintainIcon.svg';
 import iterate from '../assets/iterateIcon.svg';
 import technologyAnimation from '../animations/technologyAnimation/data.json';
 
+import CallToAction from './ui/CallToAction';
+
 const useStyles = makeStyles((theme) => ({
   rowContainer: {
     paddingLeft: '5em',
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Revolution() {
+export default function Revolution(props) {
   const classes = useStyles();
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
@@ -41,7 +43,7 @@ export default function Revolution() {
 
   return (
     <Grid container direction='column'>
-      <Grid item className={classes.rowContainer} style={{ marginTop: '2em' }}>
+      <Grid item className={classes.rowContainer} style={{ marginTop: matchesMD ? '1em' : '2em' }}>
         <Typography
           align={matchesMD ? 'center' : undefined}
           variant='h2'
@@ -71,7 +73,7 @@ export default function Revolution() {
         </Grid>
         <Grid item container direction='column' lg style={{ maxWidth: '40em' }}>
           <Grid item>
-            <Typography align='right' variant='h4' gutterBottom>
+            <Typography align={matchesMD ? 'center' : 'right'} variant='h4' gutterBottom>
               Vision
             </Typography>
           </Grid>
@@ -111,7 +113,7 @@ export default function Revolution() {
         className={classes.rowContainer}
         style={{ marginTop: '10em', marginBottom: '10em' }}
       >
-        <Grid item container direction='column' justify='flex-end' lg style={{ maxWidth: '40em' }}>
+        <Grid item container direction='column' lg style={{ maxWidth: '40em' }}>
           <Grid item>
             <Typography align={matchesMD ? 'center' : undefined} variant='h4' gutterBottom>
               Technology
@@ -174,6 +176,7 @@ export default function Revolution() {
         container
         direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
         style={{ backgroundColor: '#B3B3B3', height: '90em' }}
       >
         <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
@@ -182,15 +185,15 @@ export default function Revolution() {
               variant='h4'
               align={matchesMD ? 'center' : undefined}
               gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
             >
               Consultation
             </Typography>
           </Grid>
           <Grid item>
             <Typography
-              variant='body1'
               align={matchesMD ? 'center' : undefined}
+              variant='body1'
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -200,8 +203,8 @@ export default function Revolution() {
               examine your business holistically to find the best solutions.
             </Typography>
             <Typography
-              variant='body1'
               align={matchesMD ? 'center' : undefined}
+              variant='body1'
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -209,8 +212,8 @@ export default function Revolution() {
               to identify other potential areas for consideration.
             </Typography>
             <Typography
-              variant='body1'
               align={matchesMD ? 'center' : undefined}
+              variant='body1'
               style={{ color: '#fff', maxWidth: '20em' }}
               paragraph
             >
@@ -221,7 +224,7 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={consultation} alt='handshake' width='100%' />
+          <img src={consultation} alt='handshake' width='100%' style={{ maxWidth: 700 }} />
         </Grid>
       </Grid>
       <Grid
@@ -229,11 +232,17 @@ export default function Revolution() {
         container
         direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
         style={{ backgroundColor: '#FF7373', height: '90em' }}
       >
         <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
           <Grid item>
-            <Typography variant='h4' gutterBottom style={{ color: '#000', marginTop: '5em' }}>
+            <Typography
+              align={matchesMD ? 'center' : undefined}
+              variant='h4'
+              gutterBottom
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
+            >
               Mockup
             </Typography>
           </Grid>
@@ -269,7 +278,12 @@ export default function Revolution() {
           </Grid>
         </Grid>
         <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={mockup} alt='basic website design outline' style={{ maxWidth: 1000 }} />
+          <img
+            src={mockup}
+            width='100%'
+            alt='basic website design outline'
+            style={{ maxWidth: 1000 }}
+          />
         </Grid>
       </Grid>
       <Grid
@@ -277,6 +291,111 @@ export default function Revolution() {
         container
         direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
+        style={{ backgroundColor: '#39B54A', height: '90em' }}
+      >
+        <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
+          <Grid item>
+            <Typography
+              variant='h4'
+              gutterBottom
+              align={matchesMD ? 'center' : undefined}
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
+            >
+              Review
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              Before moving any farther we come back to you with our progress. This gives you the
+              freedom to discuss any changes you may want or any ideas you may have come up with
+              before any heavy lifting has been done.
+            </Typography>
+            <Typography
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              We give you an interactive demonstration of the mockups, thoroughly explaining the
+              thought process that went into each screen and every anticipated feature.
+            </Typography>
+            <Typography
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              Once you’re completely satisfied with the vision for our solution we get down to the
+              nitty gritty, fine-details of design.
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item lg style={{ alignSelf: 'center' }}>
+          <img src={review} alt='magnifying glass' width='100%' />
+        </Grid>
+      </Grid>
+      <Grid
+        item
+        container
+        direction={matchesMD ? 'column' : 'row'}
+        className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
+        style={{ backgroundColor: '#A67C52', height: '90em' }}
+      >
+        <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
+          <Grid item>
+            <Typography
+              variant='h4'
+              align={matchesMD ? 'center' : undefined}
+              gutterBottom
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
+            >
+              Design
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              Using the mockups and notes taken during the consultation as guides, we will start
+              ironing out what the final product will look like. This also involves using any brand
+              material like fonts, colors, and logos to extend the experience you’re already
+              familiar with.
+            </Typography>
+            <Typography
+              variant='body1'
+              align={matchesMD ? 'center' : undefined}
+              style={{ color: '#fff', maxWidth: '20em' }}
+              paragraph
+            >
+              No aspect is superfluous, and care will be taken with every decision.
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item lg style={{ alignSelf: 'center' }}>
+          <img
+            src={design}
+            width='100%'
+            alt='paintbrush leaving stroke of paint'
+            style={{ maxWidth: 1000 }}
+          />
+        </Grid>
+      </Grid>
+      <Grid
+        item
+        container
+        direction={matchesMD ? 'column' : 'row'}
+        className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
         style={{ backgroundColor: '#39B54A', height: '90em' }}
       >
         <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
@@ -285,7 +404,7 @@ export default function Revolution() {
               variant='h4'
               align={matchesMD ? 'center' : undefined}
               gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
             >
               Review
             </Typography>
@@ -321,103 +440,16 @@ export default function Revolution() {
         container
         direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
-        style={{ backgroundColor: '#A67C52', height: '90em' }}
-      >
-        <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
-          <Grid item>
-            <Typography
-              variant='h4'
-              align={matchesMD ? 'center' : undefined}
-              gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
-            >
-              Design
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography
-              variant='body1'
-              align={matchesMD ? 'center' : undefined}
-              style={{ color: '#fff', maxWidth: '20em' }}
-              paragraph
-            >
-              Using the mockups and notes taken during the consultation as guides, we will start
-              ironing out what the final product will look like. This also involves using any brand
-              material like fonts, colors, and logos to extend the experience you’re already
-              familiar with.
-            </Typography>
-            <Typography
-              variant='body1'
-              align={matchesMD ? 'center' : undefined}
-              style={{ color: '#fff', maxWidth: '20em' }}
-              paragraph
-            >
-              No aspect is superfluous, and care will be taken with every decision.
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={design} alt='magnifying glass' style={{ maxWidth: 1000 }} width='100%' />
-        </Grid>
-      </Grid>
-      <Grid
-        item
-        container
-        direction={matchesMD ? 'column' : 'row'}
-        className={classes.rowContainer}
-        style={{ backgroundColor: '#39B54A', height: '90em' }}
-      >
-        <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
-          <Grid item>
-            <Typography
-              variant='h4'
-              align={matchesMD ? 'center' : undefined}
-              gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
-            >
-              Review
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography
-              variant='body1'
-              align={matchesMD ? 'center' : undefined}
-              style={{ color: '#fff', maxWidth: '20em' }}
-              paragraph
-            >
-              Using the mockups and notes taken during the consultation as guides, we will start
-              ironing out what the final product will look like. This also involves using any brand
-              material like fonts, colors, and logos to extend the experience you’re already
-              familiar with.
-            </Typography>
-            <Typography
-              variant='body1'
-              align={matchesMD ? 'center' : undefined}
-              style={{ color: '#fff', maxWidth: '20em' }}
-              paragraph
-            >
-              No aspect is superfluous, and care will be taken with every decision.
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid item lg style={{ alignSelf: 'center' }}>
-          <img src={review} alt='magnifying glass' style={{ maxWidth: 1000 }} width='100%' />
-        </Grid>
-      </Grid>
-      <Grid
-        item
-        container
-        direction={matchesMD ? 'column' : 'row'}
-        className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
         style={{ backgroundColor: '#FBB03B', height: '90em' }}
       >
         <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
           <Grid item>
             <Typography
-              variant='h4'
               align={matchesMD ? 'center' : undefined}
+              variant='h4'
               gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
             >
               Build
             </Typography>
@@ -483,8 +515,8 @@ export default function Revolution() {
           <img
             src={build}
             alt='building construction site'
-            style={{ maxWidth: matchesMD ? 700 : 1000 }}
             width='100%'
+            style={{ maxWidth: matchesMD ? 700 : 1000 }}
           />
         </Grid>
       </Grid>
@@ -493,6 +525,7 @@ export default function Revolution() {
         container
         direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
+        justify={matchesMD ? 'center' : undefined}
         style={{ backgroundColor: '#C1272D', height: '90em' }}
       >
         <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
@@ -501,7 +534,7 @@ export default function Revolution() {
               variant='h4'
               align={matchesMD ? 'center' : undefined}
               gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
             >
               Launch
             </Typography>
@@ -546,15 +579,16 @@ export default function Revolution() {
         container
         direction={matchesMD ? 'column' : 'row'}
         className={classes.rowContainer}
-        style={{ backgroundColor: '#8E45CD', height: '90em' }}
+        justify={matchesMD ? 'center' : undefined}
+        style={{ backgroundColor: '#8E45CE', height: '90em' }}
       >
         <Grid item container direction='column' alignItems={matchesMD ? 'center' : undefined} lg>
           <Grid item>
             <Typography
               variant='h4'
-              align={matchesMD ? 'center' : undefined}
               gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
+              align={matchesMD ? 'center' : undefined}
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
             >
               Maintain
             </Typography>
@@ -593,9 +627,9 @@ export default function Revolution() {
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img
             src={maintain}
+            width='100%'
             alt='wrench tightening bolts'
             style={{ maxWidth: 500 }}
-            width='100%'
           />
         </Grid>
       </Grid>
@@ -603,6 +637,7 @@ export default function Revolution() {
         item
         container
         direction={matchesMD ? 'column' : 'row'}
+        justify={matchesMD ? 'center' : undefined}
         className={classes.rowContainer}
         style={{ backgroundColor: '#29ABE2', height: '90em' }}
       >
@@ -612,7 +647,7 @@ export default function Revolution() {
               variant='h4'
               align={matchesMD ? 'center' : undefined}
               gutterBottom
-              style={{ color: '#000', marginTop: '5em' }}
+              style={{ color: '#000', marginTop: matchesMD ? 0 : '5em' }}
             >
               Iterate
             </Typography>
@@ -651,6 +686,9 @@ export default function Revolution() {
         <Grid item lg style={{ alignSelf: 'center' }}>
           <img src={iterate} alt='falling dominoes' width='100%' />
         </Grid>
+      </Grid>
+      <Grid item>
+        <CallToAction setValue={props.setValue} />
       </Grid>
     </Grid>
   );
