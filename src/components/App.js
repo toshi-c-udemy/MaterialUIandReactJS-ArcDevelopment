@@ -9,7 +9,7 @@ import LandingPage from './LandingPage';
 import Services from './Services';
 import CustomSoftware from './CustomSoftware';
 import MobileApps from './MobileApps';
-import Websites from './websites';
+import Websites from './Websites';
 import Revolution from './Revolution';
 import About from './About';
 

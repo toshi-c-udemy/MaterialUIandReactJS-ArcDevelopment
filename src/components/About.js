@@ -15,6 +15,7 @@ import yearbook from '../assets/yearbook.svg';
 import puppy from '../assets/puppy.svg';
 
 import CallToAction from './ui/CallToAction';
+
 const useStyles = makeStyles((theme) => ({
   missionStatement: {
     fontStyle: 'italic',
@@ -50,13 +51,7 @@ export default function About(props) {
 
   return (
     <Grid container direction='column'>
-      <Grid
-        item
-        className={classes.rowContainer}
-        direction={matchesMD ? 'column' : 'row'}
-        alignItems={matchesMD ? 'center' : undefined}
-        style={{ marginTop: matchesMD ? '1em' : '2em' }}
-      >
+      <Grid item className={classes.rowContainer} style={{ marginTop: matchesMD ? '1em' : '2em' }}>
         <Typography align={matchesMD ? 'center' : undefined} variant='h2'>
           About Us
         </Typography>
@@ -82,7 +77,7 @@ export default function About(props) {
         style={{ marginTop: '10em', marginBottom: '10em' }}
         direction={matchesMD ? 'column' : 'row'}
         alignItems={matchesMD ? 'center' : undefined}
-        justify='space-around'
+        justify='space-between'
       >
         <Grid item>
           <Grid item container direction='column' lg style={{ maxWidth: '35em' }}>
@@ -127,7 +122,7 @@ export default function About(props) {
             <img
               src={history}
               alt='quill pen sitting on top of book'
-              style={{ maxHeight: '22em' }}
+              style={{ maxHeight: matchesMD ? 200 : '22em' }}
             />
           </Grid>
         </Grid>
@@ -159,12 +154,12 @@ export default function About(props) {
         <Grid item container justify={matchesMD ? 'center' : undefined}>
           <Hidden lgUp>
             <Grid item lg style={{ maxWidth: '45em', padding: '1.25em' }}>
-              <Typography variant='body1' align='center'>
+              <Typography variant='body1' align='center' paragraph>
                 I taught myself basic coding from a library book in third grade, and ever since then
                 my passion has solely been set on learning — learning about computers, learning
                 mathematics and philosophy, studying design, always just learning.
               </Typography>
-              <Typography variant='body1' align='center'>
+              <Typography variant='body1' align='center' paragraph>
                 Now I’m ready to apply everything I’ve learned, and to help others with the
                 intuition I have developed.
               </Typography>
@@ -191,12 +186,12 @@ export default function About(props) {
           </Grid>
           <Hidden mdDown>
             <Grid item lg style={{ maxWidth: '45em', padding: '1.25em' }}>
-              <Typography variant='body1' align='center'>
+              <Typography variant='body1' align='center' paragraph>
                 I taught myself basic coding from a library book in third grade, and ever since then
                 my passion has solely been set on learning — learning about computers, learning
                 mathematics and philosophy, studying design, always just learning.
               </Typography>
-              <Typography variant='body1' align='center'>
+              <Typography variant='body1' align='center' paragraph>
                 Now I’m ready to apply everything I’ve learned, and to help others with the
                 intuition I have developed.
               </Typography>
