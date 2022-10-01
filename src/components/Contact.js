@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '5em',
     marginLeft: '2em',
     '&:hover': { backgroundColor: theme.palette.secondary.light },
-
     [theme.breakpoints.down('md')]: {
       marginLeft: 0,
       marginRight: 0,
@@ -115,6 +114,7 @@ export default function Contact(props) {
       case 'phone':
         setPhone(event.target.value);
         valid = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/.test(event.target.value);
+
         if (!valid) {
           setPhoneHelper('Invalid phone');
         } else {
@@ -149,7 +149,7 @@ export default function Contact(props) {
                 variant='h2'
                 style={{ lineHeight: 1 }}
               >
-                Contact US
+                Contact Us
               </Typography>
               <Typography
                 align={matchesMD ? 'center' : undefined}
@@ -178,7 +178,7 @@ export default function Contact(props) {
               <Grid item>
                 <img
                   src={emailIcon}
-                  alt='phone'
+                  alt='envelope'
                   style={{ marginRight: '0.5em', verticalAlign: 'bottom' }}
                 />
               </Grid>
@@ -196,7 +196,7 @@ export default function Contact(props) {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item container direction='column' style={{ maxWidth: '20em' }}>
+            <Grid item container direction='column' style={{ width: '20em' }}>
               <Grid item style={{ marginBottom: '0.5em' }}>
                 <TextField
                   label='Name'
@@ -229,7 +229,7 @@ export default function Contact(props) {
                 />
               </Grid>
             </Grid>
-            <Grid item style={{ maxWidth: '20em' }}>
+            <Grid item style={{ width: '20em' }}>
               <TextField
                 InputProps={{ disableUnderline: true }}
                 value={message}
@@ -243,12 +243,12 @@ export default function Contact(props) {
             </Grid>
             <Grid item container justify='center' style={{ marginTop: '2em' }}>
               <Button
-                // disabled={
-                //   name.length === 0 ||
-                //   message.length === 0 ||
-                //   phoneHelper.length !== 0 ||
-                //   emailHelper.length !== 0
-                // }
+                disabled={
+                  name.length === 0 ||
+                  message.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                }
                 variant='contained'
                 className={classes.sendButton}
                 onClick={() => setOpen(true)}
@@ -263,8 +263,8 @@ export default function Contact(props) {
       <Dialog
         style={{ zIndex: 1302 }}
         open={open}
-        fullScreen={matchesXS}
-        onChange={() => setOpen(false)}
+        fullScreen={matchesSM}
+        onClose={() => setOpen(false)}
         PaperProps={{
           style: {
             paddingTop: matchesXS ? '1em' : '5em',
@@ -281,7 +281,6 @@ export default function Contact(props) {
                 Confirm Message
               </Typography>
             </Grid>
-            <Grid item container direction='column' style={{ maxWidth: '20em' }}>
               <Grid item style={{ marginBottom: '0.5em' }}>
                 <TextField
                   label='Name'
@@ -314,7 +313,7 @@ export default function Contact(props) {
                 />
               </Grid>
             </Grid>
-            <Grid item style={{ maxWidth: matchesXS ? '100%' : '20em' }}>
+          <Grid item style={{ width: matchesSM ? '100%' : '20em' }}>
               <TextField
                 InputProps={{ disableUnderline: true }}
                 value={message}
@@ -326,7 +325,6 @@ export default function Contact(props) {
                 onChange={(event) => setMessage(event.target.value)}
               />
             </Grid>
-          </Grid>
           <Grid
             item
             container
@@ -341,12 +339,12 @@ export default function Contact(props) {
             </Grid>
             <Grid item>
               <Button
-                // disabled={
-                //   name.length === 0 ||
-                //   message.length === 0 ||
-                //   phoneHelper.length !== 0 ||
-                //   emailHelper.length !== 0
-                // }
+                disabled={
+                  name.length === 0 ||
+                  message.length === 0 ||
+                  phoneHelper.length !== 0 ||
+                  emailHelper.length !== 0
+                }
                 variant='contained'
                 className={classes.sendButton}
                 onClick={() => setOpen(true)}
@@ -370,7 +368,10 @@ export default function Contact(props) {
       >
         <Grid
           item
-          style={{ marginLeft: matchesMD ? 0 : '3em', textAlign: matchesMD ? 'center' : 'inherit' }}
+          style={{
+            marginLeft: matchesMD ? 0 : '3em',
+            textAlign: matchesMD ? 'center' : 'inherit',
+          }}
         >
           <Grid container direction='column'>
             <Grid item>
