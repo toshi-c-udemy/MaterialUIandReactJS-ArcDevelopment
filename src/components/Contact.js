@@ -8,6 +8,8 @@ import {
   Button,
   TextField,
   useMediaQuery,
+  Dialog,
+  DialogContent,
 } from '@material-ui/core';
 
 import ButtonArrow from './ui/ButtonArrow';
@@ -88,6 +90,8 @@ export default function Contact(props) {
   const [phoneHelper, setPhoneHelper] = useState('');
 
   const [message, setMessage] = useState('');
+
+  const [open, setOpen] = useState(false);
 
   const onChange = (event) => {
     let valid;
@@ -234,14 +238,15 @@ export default function Contact(props) {
             </Grid>
             <Grid item container justify='center' style={{ marginTop: '2em' }}>
               <Button
-                disabled={
-                  name.length === 0 ||
-                  message.length === 0 ||
-                  phoneHelper.length !== 0 ||
-                  emailHelper.length !== 0
-                }
+                // disabled={
+                //   name.length === 0 ||
+                //   message.length === 0 ||
+                //   phoneHelper.length !== 0 ||
+                //   emailHelper.length !== 0
+                // }
                 variant='contained'
                 className={classes.sendButton}
+                onClick={() => setOpen(true)}
               >
                 Send Message
                 <img src={airplane} alt='paper airplane' style={{ marginLeft: '1em' }} />
@@ -250,6 +255,138 @@ export default function Contact(props) {
           </Grid>
         </Grid>
       </Grid>
+      <Dialog open={open} onChange={() => setOpen(false)}>
+        <DialogContent>
+          <Grid container direction='column'>
+            <Grid item>
+              <Typography variant='h4' gutterBottom>
+                Confirm Message
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                align={matchesMD ? 'center' : undefined}
+                variant='h2'
+                style={{ lineHeight: 1 }}
+              >
+                Contact US
+              </Typography>
+              <Typography
+                align={matchesMD ? 'center' : undefined}
+                variant='body1'
+                style={{ color: theme.palette.common.blue }}
+              >
+                We're waiting.
+              </Typography>
+            </Grid>
+            <Grid item container style={{ marginTop: '2em' }}>
+              <Grid item>
+                <img src={phoneIcon} alt='phone' style={{ marginRight: '0.5em' }} />
+              </Grid>
+              <Grid item>
+                <Typography
+                  variant='body1'
+                  style={{ color: theme.palette.common.blue, fontSize: '1rem' }}
+                >
+                  <a href='tel:5555555555' style={{ textDecoration: 'none', color: 'inherit' }}>
+                    (555) 555-5555
+                  </a>
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item container style={{ marginBottom: '2em' }}>
+              <Grid item>
+                <img
+                  src={emailIcon}
+                  alt='phone'
+                  style={{ marginRight: '0.5em', verticalAlign: 'bottom' }}
+                />
+              </Grid>
+              <Grid item>
+                <Typography
+                  variant='body1'
+                  style={{ color: theme.palette.common.blue, fontSize: '1rem' }}
+                >
+                  <a
+                    href='mailto:zachary@gmail.com'
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    zachary@gmail.com
+                  </a>
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item container direction='column' style={{ maxWidth: '20em' }}>
+              <Grid item style={{ marginBottom: '0.5em' }}>
+                <TextField
+                  label='Name'
+                  id='name'
+                  fullWidth
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: '0.5em' }}>
+                <TextField
+                  label='Email'
+                  error={emailHelper.length !== 0}
+                  helperText={emailHelper}
+                  id='email'
+                  fullWidth
+                  value={email}
+                  onChange={onChange}
+                />
+              </Grid>
+              <Grid item style={{ marginBottom: '0.5em' }}>
+                <TextField
+                  label='Phone'
+                  helperText={phoneHelper}
+                  error={phoneHelper.length !== 0}
+                  id='phone'
+                  fullWidth
+                  value={phone}
+                  onChange={onChange}
+                />
+              </Grid>
+            </Grid>
+            <Grid item style={{ maxWidth: '20em' }}>
+              <TextField
+                InputProps={{ disableUnderline: true }}
+                value={message}
+                className={classes.message}
+                multiline
+                fullWidth
+                rows={10}
+                id='message'
+                onChange={(event) => setMessage(event.target.value)}
+              />
+            </Grid>
+          </Grid>
+          <Grid item container>
+            <Grid item>
+              <Button color='primary' onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                // disabled={
+                //   name.length === 0 ||
+                //   message.length === 0 ||
+                //   phoneHelper.length !== 0 ||
+                //   emailHelper.length !== 0
+                // }
+                variant='contained'
+                className={classes.sendButton}
+                onClick={() => setOpen(true)}
+              >
+                Send Message
+                <img src={airplane} alt='paper airplane' style={{ marginLeft: '1em' }} />
+              </Button>
+            </Grid>
+          </Grid>
+        </DialogContent>
+      </Dialog>
       <Grid
         item
         container
