@@ -80,6 +80,7 @@ export default function Contact(props) {
   const theme = useTheme();
   const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
   const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+  const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
 
   const [name, setName] = useState('');
 
@@ -255,66 +256,24 @@ export default function Contact(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Dialog open={open} onChange={() => setOpen(false)}>
+      <Dialog
+        open={open}
+        onChange={() => setOpen(false)}
+        PaperProps={{
+          style: {
+            paddingTop: matchesXS ? '1em' : '5em',
+            paddingBottom: matchesXS ? '1em' : '5em',
+            paddingLeft: matchesXS ? 0 : matchesSM ? '5em' : matchesMD ? '10em' : '20em',
+            paddingRight: matchesXS ? 0 : matchesSM ? '5em' : matchesMD ? '10em' : '20em',
+          },
+        }}
+      >
         <DialogContent>
           <Grid container direction='column'>
             <Grid item>
-              <Typography variant='h4' gutterBottom>
+              <Typography align='center' variant='h4' gutterBottom>
                 Confirm Message
               </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                align={matchesMD ? 'center' : undefined}
-                variant='h2'
-                style={{ lineHeight: 1 }}
-              >
-                Contact US
-              </Typography>
-              <Typography
-                align={matchesMD ? 'center' : undefined}
-                variant='body1'
-                style={{ color: theme.palette.common.blue }}
-              >
-                We're waiting.
-              </Typography>
-            </Grid>
-            <Grid item container style={{ marginTop: '2em' }}>
-              <Grid item>
-                <img src={phoneIcon} alt='phone' style={{ marginRight: '0.5em' }} />
-              </Grid>
-              <Grid item>
-                <Typography
-                  variant='body1'
-                  style={{ color: theme.palette.common.blue, fontSize: '1rem' }}
-                >
-                  <a href='tel:5555555555' style={{ textDecoration: 'none', color: 'inherit' }}>
-                    (555) 555-5555
-                  </a>
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item container style={{ marginBottom: '2em' }}>
-              <Grid item>
-                <img
-                  src={emailIcon}
-                  alt='phone'
-                  style={{ marginRight: '0.5em', verticalAlign: 'bottom' }}
-                />
-              </Grid>
-              <Grid item>
-                <Typography
-                  variant='body1'
-                  style={{ color: theme.palette.common.blue, fontSize: '1rem' }}
-                >
-                  <a
-                    href='mailto:zachary@gmail.com'
-                    style={{ textDecoration: 'none', color: 'inherit' }}
-                  >
-                    zachary@gmail.com
-                  </a>
-                </Typography>
-              </Grid>
             </Grid>
             <Grid item container direction='column' style={{ maxWidth: '20em' }}>
               <Grid item style={{ marginBottom: '0.5em' }}>
@@ -362,9 +321,9 @@ export default function Contact(props) {
               />
             </Grid>
           </Grid>
-          <Grid item container>
+          <Grid item container style={{ marginTop: '2em' }} alignItems='center'>
             <Grid item>
-              <Button color='primary' onClick={() => setOpen(false)}>
+              <Button style={{ fontWeight: 300 }} color='primary' onClick={() => setOpen(false)}>
                 Cancel
               </Button>
             </Grid>
